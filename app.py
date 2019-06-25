@@ -18,8 +18,6 @@ jwt = JWTManager(app)
 
 api = Api(app)
 
-heroku = Heroku(app)
-
 def run_application():
     from routes.StoreApis import StoreApi, StoreListApi
     from routes.ProductApis import ProductApi
@@ -41,4 +39,8 @@ def run_application():
     api.add_resource(SecretResource, '/secret')
 
     
+    heroku = Heroku(app)
+
+if __name__ == "__main__":
+    run_application()
     app.run()
