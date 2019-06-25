@@ -1,3 +1,3 @@
 from app import run_application
 
-run_application()
+app = run_application()

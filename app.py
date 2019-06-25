@@ -38,8 +38,8 @@ def run_application():
     api.add_resource(AllUsers, '/users')
     api.add_resource(SecretResource, '/secret')
 
-    
     heroku = Heroku(app)
+    return app
 
 if __name__ == "__main__":
     run_application()
