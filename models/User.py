@@ -6,7 +6,7 @@ from sqlalchemy.orm import relationship
 from config.DataBase import Base as Base
 from config.DataBase import db_session as db
 
-from run import bcrypt
+from app import bcrypt
 import json
 
 class User(Base):
