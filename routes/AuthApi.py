@@ -48,6 +48,7 @@ class UserLogin(Resource):
             return {
                 'message': 'Logged in as {}'.format(current_user.email),
                 'user_email': current_user.email,
+                'user_id': current_user.id,
                 'access_token': access_token,
                 'refresh_token': refresh_token
             }, 200
