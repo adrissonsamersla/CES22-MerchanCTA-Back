@@ -31,12 +31,15 @@ def run_application():
     from routes.AuthApi import TokenRefresh
     from routes.AuthApi import AllUsers
     from routes.AuthApi import SecretResource
+    from routes.AuthApi import GetStoresFromUser
 
     api.add_resource(UserRegistration, '/registration')
     api.add_resource(UserLogin, '/login')
     api.add_resource(TokenRefresh, '/token/refresh')
     api.add_resource(AllUsers, '/users')
     api.add_resource(SecretResource, '/secret')
+    
+    api.add_resource(GetStoresFromUser, '/getStores/<string:user_id>')
 
     heroku = Heroku(app)
     return app

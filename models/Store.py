@@ -32,3 +32,14 @@ class Store(Base):
             'rating': self.rating,
             'user_id': self.user_id
         }
+
+# Returns everything!
+# return list(map(lambda x : {
+#     'id': x.id,
+#     'name': x.name,
+#     'description': x.description,
+#     'address': x.address,
+#     'rating': x.rating,
+#     'user_id': x.user_id,
+#     'products': list(map(lambda y : y.serialize(), x.products))
+# }, list_stores))  

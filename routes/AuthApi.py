@@ -1,5 +1,6 @@
 from flask_restful import Resource, reqparse
 
+from models.Store import Store
 from models.User import User
 from config.DataBase import db_session as db
 
@@ -78,4 +79,9 @@ class SecretResource(Resource):
         return {
             'answer': 42
         }
+
+class GetStoresFromUser(Resource):
+    def get(self, user_id):
+        list_stores = Store.query.filter(Store.user_id == user_id).all()
+        return list(map(lambda x : x.serialize(), list_stores))
       
