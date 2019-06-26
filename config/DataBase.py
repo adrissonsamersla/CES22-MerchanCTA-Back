@@ -2,11 +2,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-engine = create_engine('postgres://ipzpslgd:bsbk9FbuwE0MbKulIi3X02f_BWq14CwG@isilo.db.elephantsql.com:5432/ipzpslgd', 
+engine = create_engine('postgres://yzmcoqod:U1bwRQnYd11GtJXe2IHngv84bFTUO-FN@raja.db.elephantsql.com:5432/yzmcoqod', 
                         convert_unicode=True, pool_size=5, max_overflow=0)
-db_session = scoped_session(sessionmaker(autocommit=False,
-                                         autoflush=False,
-                                         bind=engine))
+db_session = scoped_session(sessionmaker(bind=engine))
 
 Base = declarative_base()
 Base.query = db_session.query_property()

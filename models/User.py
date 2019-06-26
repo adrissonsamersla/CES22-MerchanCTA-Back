@@ -17,10 +17,13 @@ class User(Base):
     password = Column(String(255), nullable=False)
     registered_on = Column(DateTime, nullable=False)
 
+    stores = relationship("Store")
+
     def __init__(self, email, password):
         Base()
         self.email = email
         self.password = bcrypt.generate_password_hash(password).decode()
+
         self.registered_on = datetime.datetime.now()
 
     def save_to_db(self):
