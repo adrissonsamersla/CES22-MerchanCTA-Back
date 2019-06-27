@@ -40,23 +40,26 @@ class UserRegistration(Resource):
 class UserLogin(Resource):
     def post(self):
         data = parser.parse_args()
-        current_user = User.find_by_email(data['email'])
+        try:
+            current_user = User.find_by_email(data['email'])
 
-        if not current_user:
-            return {'message': 'Email {} isn\'t registered'.format(data['email'])}
-        
-        if User.verify_hash(current_user.password, data['password']):
-            access_token = create_access_token(identity = data['email'])
-            refresh_token = create_refresh_token(identity = data['email'])
-            return {
-                'message': 'Logged in as {}'.format(current_user.email),
-                'user_email': current_user.email,
-                'user_id': current_user.id,
-                'access_token': access_token,
-                'refresh_token': refresh_token
-            }, 200
-        else:
-            return {'message': 'Wrong credentials'}, 403
+            if not current_user:
+                return {'message': 'Email {} isn\'t registered'.format(data['email'])}, 403
+            
+            if User.verify_hash(current_user.password, data['password']):
+                access_token = create_access_token(identity = data['email'])
+                refresh_token = create_refresh_token(identity = data['email'])
+                return {
+                    'message': 'Logged in as {}'.format(current_user.email),
+                    'user_email': current_user.email,
+                    'user_id': current_user.id,
+                    'access_token': access_token,
+                    'refresh_token': refresh_token
+                }, 200
+            else:
+                return {'message': 'Wrong credentials'}, 403
+        except:
+            return {'message': 'Something went wrong'}, 500 
       
       
 class TokenRefresh(Resource):
