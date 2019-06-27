@@ -14,6 +14,7 @@ class Store(Base):
 
     user_id = Column(Integer, ForeignKey("users.id"))
     products = relationship("Product")
+    ratings = relationship("Rating")
 
     def __init__(self, name, description, address, rating, user_id):
         Base()

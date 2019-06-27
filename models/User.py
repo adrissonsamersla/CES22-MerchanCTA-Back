@@ -18,6 +18,7 @@ class User(Base):
     registered_on = Column(DateTime, nullable=False)
 
     stores = relationship("Store")
+    ratings = relationship("Rating")
 
     def __init__(self, email, password):
         Base()

@@ -13,9 +13,11 @@ def init_db():
     from models.User import User
     from models.Store import Store
     from models.Product import Product
+    from models.Rating import Rating
 
 def config_db():
     from models.User import User
     from models.Store import Store
     from models.Product import Product
+    from models.Rating import Rating
     Base.metadata.create_all(bind=engine)

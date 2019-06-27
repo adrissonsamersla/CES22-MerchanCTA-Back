@@ -41,6 +41,10 @@ def run_application():
     
     api.add_resource(GetStoresFromUser, '/getStores/<string:user_id>')
 
+    from routes.RatingApi import RantingApi
+
+    api.add_resource(RantingApi, '/rate/<int:user_id>')
+
     heroku = Heroku(app)
     return app
 
