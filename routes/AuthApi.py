@@ -28,8 +28,8 @@ class UserRegistration(Resource):
             refresh_token = create_refresh_token(identity = data['email'])
             return {
                 'message': 'User {} was created'.format(data['email']),
-                'user_email': current_user.email,
-                'user_id': current_user.id,
+                'user_email': new_user.email,
+                'user_id': new_user.id,
                 'access_token': access_token,
                 'refresh_token': refresh_token
             }, 200
