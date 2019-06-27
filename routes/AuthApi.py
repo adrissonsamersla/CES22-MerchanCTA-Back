@@ -56,7 +56,7 @@ class UserLogin(Resource):
                 'refresh_token': refresh_token
             }, 200
         else:
-            return {'message': 'Wrong credentials'}
+            return {'message': 'Wrong credentials'}, 403
       
       
 class TokenRefresh(Resource):
