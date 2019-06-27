@@ -43,7 +43,7 @@ class UserLogin(Resource):
         current_user = User.find_by_email(data['email'])
 
         if not current_user:
-            return {'message': 'User {} doesn\'t exist'.format(data['email'])}
+            return {'message': 'Email {} isn\'t registered'.format(data['email'])}
         
         if User.verify_hash(current_user.password, data['password']):
             access_token = create_access_token(identity = data['email'])
